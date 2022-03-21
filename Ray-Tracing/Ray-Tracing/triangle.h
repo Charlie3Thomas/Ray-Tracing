@@ -1,6 +1,7 @@
 #pragma once
 
 #include "object.h"
+#include "material.h"
 
 class triangle : public object
 {
@@ -18,10 +19,11 @@ public:
 
 	vertices_t::const_iterator begin() const { return _vertices.begin(); }
 	vertices_t::const_iterator end() const { return _vertices.end(); }
+	//colour_t _colour = RED/*random_colour()*/;
+	material mat;
 
 private:
 	vertices_t _vertices;
-	colour_t _colour = random_colour();
 
 	mutable std::optional<spacial_t> _normal;
 

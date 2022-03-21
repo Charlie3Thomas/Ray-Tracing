@@ -23,8 +23,7 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 
 	// We do not count the ray as hitting if direction is almost orthoganal to the normal of the triangle, or if it
 	// is hitting the backwards face of the triangle
-	constexpr floating_point_t epsilon = 1e-8;
-	if (alignment < epsilon) return std::optional<colour_t>();
+	if (alignment < EPSILON) return std::optional<colour_t>();
 
 	// Compute the distance along the ray which intersects with the plane
 	const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
@@ -43,8 +42,20 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 
 	// Are we right of the third side?
 	if (unstd::scalar_triple_product(normal, side2, intersection - absolute[1]) < 0) return std::optional<colour_t>();
+	
+	/*
+		r = d -2(d . n)n
+		where 
+		r = incoming ray vector
+		2 because incoming anble x 2
+		d . n = alignment
+		n = normal vector of surface hit
+	*/
 
-	return hit_info(_colour * alignment, (intersection - ray.origin).length());
+	spacial_t reflection = ray.direction + (2 * alignment * normal);
+	reflection.normalise();
+
+	return hit_info(mat.colour * alignment, (intersection - ray.origin).length(), ray_t(intersection, reflection));
 }
 
 triangle::vertex_t& triangle::operator[](size_t i)

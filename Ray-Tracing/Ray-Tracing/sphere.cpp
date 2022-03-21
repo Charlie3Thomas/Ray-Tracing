@@ -8,10 +8,32 @@ sphere::sphere(floating_point_t radius_)
 
 std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
 {
-	const spacial_t oc = ray.origin - _centre;
-	const floating_point_t a = ray.direction.square_length();
-	const floating_point_t b = floating_point_t(2.0)*unstd::dot_product(oc, ray.direction);
-	const floating_point_t c = oc.square_length() - radius*radius;
-	
-	return (b * b - 4 * a * c > 0) ? hit_info(RED, oc.length() - radius) : std::optional<hit_info>();
+	std::optional<hit_info> ret;
+
+	const spacial_t oc = _centre - ray.origin;
+	const floating_point_t oc_dot_direction = unstd::dot_product(oc, ray.direction);
+	const floating_point_t l_sqrd = oc.square_length() - std::pow(oc_dot_direction, 2);
+
+	if (l_sqrd > std::pow(radius, 2))
+	{
+		return ret;
+	}
+
+	const floating_point_t alignment = l_sqrd / std::pow(radius, 2);
+	const floating_point_t z = std::sqrt(std::pow(radius, 2) - l_sqrd);
+	const floating_point_t t = oc_dot_direction - z;
+	if (t < EPSILON)
+	{
+		return ret;
+	}
+
+	const spacial_t intersect = ray[t];
+
+	const spacial_t normal = intersect - _centre;
+
+	ray_t scattered_ray(intersect, ray.direction - 2.0 * unstd::dot_product(normal, ray.direction) * normal);
+
+	scattered_ray.direction.normalise();
+
+	return hit_info(RED * std::cos(3.14159265359 * std::sqrt(alignment) / 2), (intersect - ray.origin).length(), scattered_ray);
 }

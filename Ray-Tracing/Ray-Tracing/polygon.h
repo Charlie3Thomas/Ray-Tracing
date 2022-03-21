@@ -12,6 +12,8 @@ public:
 
 	void set_centre(const spacial_t& centre) override;
 
+	colour_t pgon_colour;
+
 private:
 	typedef std::vector<triangle> triangles_t;
 	triangles_t _triangles;

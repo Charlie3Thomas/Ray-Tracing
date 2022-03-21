@@ -155,12 +155,14 @@
     <ClInclude Include="config.h" />
     <ClInclude Include="line.h" />
     <ClInclude Include="logging.h" />
+    <ClInclude Include="material.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="parallelepiped.h" />
     <ClInclude Include="parallelogram.h" />
     <ClInclude Include="polygon.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="sphere.h" />
+    <ClInclude Include="timer.h" />
     <ClInclude Include="triangle.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="vector.h" />

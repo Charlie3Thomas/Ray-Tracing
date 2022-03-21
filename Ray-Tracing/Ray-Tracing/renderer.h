@@ -11,8 +11,9 @@ class renderer
 public:
 	renderer() = default;
 	~renderer() = default;
-	static void render(const objects_t& objects, image_t& img, const camera cam);
+	static void render(const objects_t& objects, image_t& img, const camera& cam);
 
 private:
+
 
 };

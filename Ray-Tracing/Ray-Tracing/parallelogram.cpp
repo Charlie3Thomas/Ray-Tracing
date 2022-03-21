@@ -24,8 +24,7 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
 	const floating_point_t alignment = unstd::dot_product(normal, ray.direction);
 
 	// The ray will never hit if its direction is orthoganal to the normal of the parallelogram
-	constexpr floating_point_t epsilon = 1e-8;
-	if (std::abs(alignment) < epsilon) return std::optional<hit_info>();
+	if (std::abs(alignment) < EPSILON) return std::optional<hit_info>();
 
 	// Compute the distance along the ray which intersects with the plane
 	const floating_point_t t = -unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;

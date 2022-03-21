@@ -28,6 +28,24 @@
     <Filter Include="Source Files\Setup">
       <UniqueIdentifier>{78cac14a-b0b6-4ffc-a365-6c5e23402798}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{6f442c19-83fa-46e1-81e8-330bcb48532c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{622f0a78-4a5a-45b2-a383-40263e68204a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\BVH">
+      <UniqueIdentifier>{268cb8bf-a0ac-409f-a8a0-c6d2a647f0c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\BVH">
+      <UniqueIdentifier>{ec94882b-5e32-4107-9b3f-4333af4dace9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Materials">
+      <UniqueIdentifier>{b03609b0-e2d9-4e58-a68d-65363eaeba76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Materials">
+      <UniqueIdentifier>{e78b045b-63c3-4f50-b3c2-2543c8dd5d7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,12 +57,6 @@
     <ClCompile Include="sphere.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="parallelepiped.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="parallelogram.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="polygon.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -52,7 +64,13 @@
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="renderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="parallelepiped.cpp">
+      <Filter>Source Files\Objects\BVH</Filter>
+    </ClCompile>
+    <ClCompile Include="parallelogram.cpp">
+      <Filter>Source Files\Objects\BVH</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +84,6 @@
       <Filter>Header Files\Setup</Filter>
     </ClInclude>
     <ClInclude Include="object.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="parallelepiped.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="parallelogram.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="polygon.h">
@@ -90,10 +102,22 @@
       <Filter>Header Files\Ray</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="renderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="parallelepiped.h">
+      <Filter>Header Files\Objects\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="parallelogram.h">
+      <Filter>Header Files\Objects\BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files\Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="material.h">
+      <Filter>Header Files\Materials</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

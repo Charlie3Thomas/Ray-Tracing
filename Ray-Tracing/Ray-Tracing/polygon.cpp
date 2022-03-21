@@ -80,8 +80,11 @@ std::istream& operator>>(std::istream& is, polygon& v)
 		v._triangles.emplace_back();
 		auto& triangle = v._triangles.back();
 
+		triangle.mat.colour = v.pgon_colour;
 		for (size_t j = 0; j < net.size(); j++)
+		{
 			triangle[j] = vertexes[net[j] - 1];
+		}
 	}
 
 	// Reset the centres of all the triangles
@@ -97,6 +100,7 @@ std::ostream& operator<<(std::ostream& os, const polygon& v)
 
 void polygon::make_bounding_box() const
 {
+	timer t("make_bounding_box");
 	// Find the minimum and maximum x / y / z coordinates
 	spacial_t min = _triangles[0][0];
 	spacial_t max = _triangles[0][0];

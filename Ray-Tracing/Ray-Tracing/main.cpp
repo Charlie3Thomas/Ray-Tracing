@@ -1,7 +1,6 @@
 #include "polygon.h"
 #include "sphere.h"
 #include "camera.h"
-#include "timer.h"
 #include "renderer.h"
 
 #include <memory>
@@ -12,42 +11,61 @@ typedef std::vector<std::unique_ptr<object>> objects_t;
 static bool load_objects(objects_t& objects)
 {
 	// Pushes back a sphere
-#if 0
+#if 1
 	{
-		std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
-		obj->set_centre({ 0.0, 0.0, -55.0 });
+		std::unique_ptr<sphere> obj = std::make_unique<sphere>(10);
+		obj->set_centre({ 0.0, 0.0, -100.0 });
 
 		objects.emplace_back(std::move(obj));
 	}
 #endif
 
 	// Pushes back a cow
-#if 1
+#if 0
 	{
 		std::unique_ptr<polygon> obj = std::make_unique<polygon>();
+		obj->pgon_colour = SILVER;
 
 		std::fstream fs("cow.obj");
 		if (!fs)
 			return false;
 
 		fs >> *obj;
-		obj->set_centre({ -1.0, 0.0, -75.0 });
+		obj->set_centre({ -5.0, 0.0, -50.0 });
 
 		objects.emplace_back(std::move(obj));
 	}
 #endif
 
 	// Pushes back a teapot
-#if 1
+#if 0
 	{
 		std::unique_ptr<polygon> obj = std::make_unique<polygon>();
+		obj->pgon_colour = GOLD;
 
 		std::fstream fs("teapot.obj");
 		if (!fs)
 			return false;
 
 		fs >> *obj;
-		obj->set_centre({ 1.0, -3.0, -65.0 });
+		obj->set_centre({ 3.0, -3.25, -40.0 });
+
+		objects.emplace_back(std::move(obj));
+	}
+#endif
+
+	// Pushes back an igea head
+#if 1
+	{
+		std::unique_ptr<polygon> obj = std::make_unique<polygon>();
+		obj->pgon_colour = GOLD;
+
+		std::fstream fs("igea.obj");
+		if (!fs)
+			return false;
+
+		fs >> *obj;
+		obj->set_centre({ 0.0, 0.0, -1.0 });
 
 		objects.emplace_back(std::move(obj));
 	}
@@ -58,6 +76,7 @@ static bool load_objects(objects_t& objects)
 
 int main()
 {
+	timer t("Program");
 	// Creates an objects vector and loads it up
 	objects_t objects;
 	if (!load_objects(objects))

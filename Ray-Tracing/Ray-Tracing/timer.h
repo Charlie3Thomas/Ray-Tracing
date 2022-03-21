@@ -13,7 +13,7 @@ public:
 		std::cout
 			<< s
 			<< " -> "
-			<< "Timer started...\n"
+			<< "Timer started..."
 			<< std::endl;
 	}
 
